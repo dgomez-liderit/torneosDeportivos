@@ -8,6 +8,7 @@ table 50102 Partido
         {
             DataClassification = ToBeClassified;
 
+            Editable = false;
         }
         field(2; "Codigo Torneo"; Integer)
         {
@@ -60,8 +61,9 @@ table 50102 Partido
         myInt: Integer;
 
     trigger OnInsert()
+    var
     begin
-
+        "Id Partido" := Rec.Count() + 1;
     end;
 
     trigger OnModify()

@@ -13,7 +13,7 @@ table 50104 "Venta Entradas"
             DataClassification = ToBeClassified;
             TableRelation = Partido;
         }
-        field(3; "Tipo Entrata"; Enum "Tipos Entradas")
+        field(3; "Tipo Entrada"; Enum "Tipos Entradas")
         {
             DataClassification = ToBeClassified;
         }

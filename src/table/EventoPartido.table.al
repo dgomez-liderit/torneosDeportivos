@@ -7,6 +7,7 @@ table 50103 EventoPartido
         field(1; "Id Evento"; Integer)
         {
             DataClassification = ToBeClassified;
+
             Editable = false;
         }
         field(2; "Id Partido"; Integer)
@@ -41,7 +42,12 @@ table 50103 EventoPartido
         myInt: Integer;
 
     trigger OnInsert()
+    var
+        v: Record Partido;
     begin
+        v.Get(v."Id Partido");
+        "Id Partido" := v."Id Partido";
+        "Id Evento" := Rec.Count() + 1;
 
     end;
 
