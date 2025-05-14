@@ -3,7 +3,7 @@ page 50104 Eventos
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = EventoPartido;
+    SourceTable = EventosPartidos;
 
     layout
     {

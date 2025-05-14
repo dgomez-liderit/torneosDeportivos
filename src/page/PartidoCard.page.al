@@ -38,10 +38,12 @@ page 50103 "Ficha del partido"
                 field(Resultado; Rec.Resultado)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Estado; Rec.Estado)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
             }
             group("Eventos Partido")
@@ -67,12 +69,20 @@ page 50103 "Ficha del partido"
     {
         area(Processing)
         {
-            action(ActionName)
+            action("Simular Partido")
             {
+                ApplicationArea = All;
+                Promoted = true;
+                PromotedCategory = Process;
+                Image = CopyFromBOM;
 
                 trigger OnAction()
+                var
+                    simuladorPartidos: Codeunit "Simulador Partidos";
                 begin
-
+                    if (Rec.Estado = Rec.Estado::Finalizado) then Error('El partido ya ha sido simulado, han quedado %1', Rec.Resultado);
+                    simuladorPartidos.SimuladorPartidos(Rec);
+                    CurrPage.Update();
                 end;
             }
         }

@@ -1,4 +1,4 @@
-table 50103 EventoPartido
+table 50105 EventoSPartidos
 {
     DataClassification = ToBeClassified;
 
@@ -27,7 +27,7 @@ table 50103 EventoPartido
 
     keys
     {
-        key(PK; "Id Evento")
+        key(PK; "Id Partido", "Id Evento")
         {
             Clustered = true;
         }
@@ -43,12 +43,8 @@ table 50103 EventoPartido
 
     trigger OnInsert()
     var
-        v: Record Partido;
     begin
-        v.Get(v."Id Partido");
-        "Id Partido" := v."Id Partido";
-        "Id Evento" := Rec.Count + 1;
-
+        "Id Evento" := calcularIdEvento();
     end;
 
     trigger OnModify()
@@ -66,4 +62,18 @@ table 50103 EventoPartido
 
     end;
 
+    procedure calcularIdEvento(): Integer
+    var
+        v: Record EventoSPartidos;
+        contador: Integer;
+    begin
+        v.SetRange("Id Partido", Rec."Id Partido");
+        if v.FindLast() then
+            contador := v."Id Evento"
+        else
+            contador := 0;
+
+
+        exit(contador + 1);
+    end;
 }

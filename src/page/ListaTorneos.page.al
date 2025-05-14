@@ -38,6 +38,17 @@ page 50100 "Lista Torneos"
                 field(Moneda; Rec.Moneda)
                 {
                     ApplicationArea = All;
+                    Editable = false;
+                }
+                field(CosteTorneo; Rec.CosteTorneo)
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field(CosteBase; Rec.CosteBase)
+                {
+                    ApplicationArea = All;
+                    Editable = false;
                 }
             }
         }
@@ -61,5 +72,10 @@ page 50100 "Lista Torneos"
             }
         }
     }
-
+    trigger OnAfterGetRecord()
+    var
+        calculadoraCostes: Codeunit "Calculadora Costes";
+    begin
+        calculadoraCostes.calcularCosteTorneo(Rec);
+    end;
 }

@@ -63,7 +63,7 @@ table 50102 Partido
     trigger OnInsert()
     var
     begin
-        "Id Partido" := Rec.Count() + 1;
+        "Id Partido" := Rec.Count + 1;
     end;
 
     trigger OnModify()
