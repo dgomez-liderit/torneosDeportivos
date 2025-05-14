@@ -62,12 +62,17 @@ page 50100 "Lista Torneos"
     {
         area(Processing)
         {
-            action(ActionName)
+            action("Calcular coste")
             {
-
+                Promoted = true;
+                PromotedCategory = Process;
+                Image = GoTo;
+                ApplicationArea = All;
                 trigger OnAction()
+                var
+                    calculadoraCostes: Codeunit "Calculadora Costes";
                 begin
-
+                    calculadoraCostes.calcularCosteTorneo(Rec);
                 end;
             }
         }
