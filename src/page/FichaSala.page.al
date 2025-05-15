@@ -1,0 +1,121 @@
+page 50107 "Ficha Sala"
+{
+    Caption = 'Ficha Sala';
+    PageType = Card;
+    ApplicationArea = All;
+    UsageCategory = Lists;
+    SourceTable = MeetingRoom;
+
+    layout
+    {
+        area(Content)
+        {
+            group("Detalles de la sala")
+            {
+                field("Codigo Sala"; Rec."Codigo Sala")
+                {
+                    ApplicationArea = All;
+                }
+                field(Nombre; Rec.Nombre)
+                {
+                    ApplicationArea = All;
+                }
+                field(Ubicacion; Rec.Ubicacion)
+                {
+                    ApplicationArea = All;
+                }
+                field(Capacidad; Rec.Capacidad)
+                {
+                    ApplicationArea = All;
+                }
+            }
+        }
+        area(Factboxes)
+        {
+
+        }
+    }
+
+    actions
+    {
+        area(Processing)
+        {
+            action("Reservar 1 noche")
+            {
+                ApplicationArea = All;
+                Caption = 'Reservar por 1 noche';
+                Image = AddToHome;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    reserva: Record "RoomReservation";
+                    controlador: Codeunit "Controlador Reservas";
+                begin
+                    reserva.Init();
+                    reserva."Id Reserva" := reserva.calcularId(reserva);
+                    reserva."Sala asociada" := Rec."Codigo Sala";
+                    reserva."Fecha inicio" := Today();
+                    reserva."Fecha fin" := CalcDate('<1D>', reserva."Fecha inicio");
+                    reserva."Personsa que reserva" := 'ADMIN';
+                    controlador.ControlarFechas(Rec);
+                    reserva.Insert();
+                    Rec.Reservada := true;
+                    Message('Reserva por 1 dia realizada correctamente');
+                end;
+            }
+            action("Reservar 1 semana")
+            {
+                ApplicationArea = All;
+                Caption = 'Reservar por 1 semana';
+                Image = AddToHome;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    reserva: Record "RoomReservation";
+                    controlador: Codeunit "Controlador Reservas";
+                begin
+                    reserva.Init();
+                    reserva."Id Reserva" := reserva.calcularId(reserva);
+                    reserva."Sala asociada" := Rec."Codigo Sala";
+                    reserva."Fecha inicio" := Today();
+                    reserva."Fecha fin" := CalcDate('<1W>', reserva."Fecha inicio");
+                    reserva."Personsa que reserva" := 'ADMIN';
+                    controlador.ControlarFechas(Rec);
+                    reserva.Insert();
+                    Rec.Reservada := true;
+                    Message('Reserva por 1 semana realizada correctamente');
+                end;
+
+            }
+            action("Reservar 1 mes")
+            {
+                ApplicationArea = All;
+                Caption = 'Reservar por 1 mes';
+                Image = AddToHome;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    reserva: Record "RoomReservation";
+                    controlador: Codeunit "Controlador Reservas";
+                begin
+                    reserva.Init();
+                    reserva."Id Reserva" := reserva.calcularId(reserva);
+                    reserva."Sala asociada" := Rec."Codigo Sala";
+                    reserva."Fecha inicio" := Today();
+                    reserva."Fecha fin" := CalcDate('<1M>', reserva."Fecha inicio");
+                    reserva."Personsa que reserva" := 'ADMIN';
+                    controlador.ControlarFechas(Rec);
+                    reserva.Insert();
+                    Rec.Reservada := true;
+                    Message('Reserva por 1 mes realizada correctamente');
+                end;
+            }
+        }
+    }
+}
