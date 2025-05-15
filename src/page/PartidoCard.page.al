@@ -43,7 +43,7 @@ page 50103 "Ficha del partido"
                 field(Estado; Rec.Estado)
                 {
                     ApplicationArea = All;
-                    Editable = false;
+                    // Editable = false;
                 }
             }
             group("Eventos Partido")
