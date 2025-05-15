@@ -22,43 +22,6 @@
       <rd:DataSourceID>4374896e-efe3-4259-b530-e6c2dcbf56d6</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="Codigo_Sala">
-          <DataField>Codigo_Sala</DataField>
-        </Field>
-        <Field Name="Nombre">
-          <DataField>Nombre</DataField>
-        </Field>
-        <Field Name="Ubicacion">
-          <DataField>Ubicacion</DataField>
-        </Field>
-        <Field Name="Capacidad">
-          <DataField>Capacidad</DataField>
-        </Field>
-        <Field Name="Id_Reserva">
-          <DataField>Id_Reserva</DataField>
-        </Field>
-        <Field Name="Sala_asociada">
-          <DataField>Sala_asociada</DataField>
-        </Field>
-        <Field Name="Fecha_inicio">
-          <DataField>Fecha_inicio</DataField>
-        </Field>
-        <Field Name="Fecha_fin">
-          <DataField>Fecha_fin</DataField>
-        </Field>
-        <Field Name="Personsa_que_reserva">
-          <DataField>Personsa_que_reserva</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -747,12 +710,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -834,4 +791,41 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Codigo_Sala">
+          <DataField>Codigo_Sala</DataField>
+        </Field>
+        <Field Name="Nombre">
+          <DataField>Nombre</DataField>
+        </Field>
+        <Field Name="Ubicacion">
+          <DataField>Ubicacion</DataField>
+        </Field>
+        <Field Name="Capacidad">
+          <DataField>Capacidad</DataField>
+        </Field>
+        <Field Name="Id_Reserva">
+          <DataField>Id_Reserva</DataField>
+        </Field>
+        <Field Name="Sala_asociada">
+          <DataField>Sala_asociada</DataField>
+        </Field>
+        <Field Name="Fecha_inicio">
+          <DataField>Fecha_inicio</DataField>
+        </Field>
+        <Field Name="Fecha_fin">
+          <DataField>Fecha_fin</DataField>
+        </Field>
+        <Field Name="Personsa_que_reserva">
+          <DataField>Personsa_que_reserva</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

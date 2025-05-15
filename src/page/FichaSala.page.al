@@ -50,19 +50,9 @@ page 50107 "Ficha Sala"
 
                 trigger OnAction()
                 var
-                    reserva: Record "RoomReservation";
-                    controlador: Codeunit "Controlador Reservas";
+                    v: Codeunit "Controlador Reservas";
                 begin
-                    reserva.Init();
-                    reserva."Id Reserva" := reserva.calcularId(reserva);
-                    reserva."Sala asociada" := Rec."Codigo Sala";
-                    reserva."Fecha inicio" := Today();
-                    reserva."Fecha fin" := CalcDate('<1D>', reserva."Fecha inicio");
-                    reserva."Personsa que reserva" := 'ADMIN';
-                    controlador.ControlarFechas(Rec);
-                    reserva.Insert();
-                    Rec.Reservada := true;
-                    Message('Reserva por 1 dia realizada correctamente');
+                    v.calcularReserva(Rec, '<1D>');
                 end;
             }
             action("Reservar 1 semana")
@@ -75,19 +65,9 @@ page 50107 "Ficha Sala"
 
                 trigger OnAction()
                 var
-                    reserva: Record "RoomReservation";
-                    controlador: Codeunit "Controlador Reservas";
+                    v: Codeunit "Controlador Reservas";
                 begin
-                    reserva.Init();
-                    reserva."Id Reserva" := reserva.calcularId(reserva);
-                    reserva."Sala asociada" := Rec."Codigo Sala";
-                    reserva."Fecha inicio" := Today();
-                    reserva."Fecha fin" := CalcDate('<1W>', reserva."Fecha inicio");
-                    reserva."Personsa que reserva" := 'ADMIN';
-                    controlador.ControlarFechas(Rec);
-                    reserva.Insert();
-                    Rec.Reservada := true;
-                    Message('Reserva por 1 semana realizada correctamente');
+                    v.calcularReserva(Rec, '<1W>');
                 end;
 
             }
@@ -101,19 +81,9 @@ page 50107 "Ficha Sala"
 
                 trigger OnAction()
                 var
-                    reserva: Record "RoomReservation";
-                    controlador: Codeunit "Controlador Reservas";
+                    v: Codeunit "Controlador Reservas";
                 begin
-                    reserva.Init();
-                    reserva."Id Reserva" := reserva.calcularId(reserva);
-                    reserva."Sala asociada" := Rec."Codigo Sala";
-                    reserva."Fecha inicio" := Today();
-                    reserva."Fecha fin" := CalcDate('<1M>', reserva."Fecha inicio");
-                    reserva."Personsa que reserva" := 'ADMIN';
-                    controlador.ControlarFechas(Rec);
-                    reserva.Insert();
-                    Rec.Reservada := true;
-                    Message('Reserva por 1 mes realizada correctamente');
+                    v.calcularReserva(Rec, '<1M>');
                 end;
             }
         }
